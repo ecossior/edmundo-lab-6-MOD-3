@@ -12,19 +12,12 @@ class AddProject extends BasePage {
           
     // Extra Points add select the following behavior
     private colorDropdown:string = "//button[@aria-labelledby='edit_project_modal_field_color_label']";
-    private colorItem = (name: string) => `//span[@class="color_dropdown_select__name" and text()="${name}"]`;   
     private favoritesToggle: string = "//div[@class='reactist_switch']";
-    private optionView = (name: string) => `//div[@class='edit_project_modal__${name}_preview']`;    
+    private colorItem = (name: string) => `//span[@class="color_dropdown_select__name" and text()="${name}"]`;   
+    private optionView = (name: string) => `//div[@class='edit_project_modal__${name}_preview']`;        
     
-    private newProject = (name: string) => `//a[@aria-label="${name}", 0 tareas"]`;
-
     constructor(){
         super();
-    }
-
-    async setProjectName(projectName: string) {
-        await ElementActions.setText(this.nameTextField, projectName);
-        await driverInstance.Page.waitForTimeout(20000);
     }
 
     async selectColor(color: string) {
@@ -36,9 +29,14 @@ class AddProject extends BasePage {
         await ElementActions.click(this.favoritesToggle);
     }
 
+    async setProjectName(projectName: string) {
+        await ElementActions.setText(this.nameTextField, projectName);
+        await driverInstance.Page.waitForTimeout(20000);
+    }
+
     async clickoptionView(name:string) {
         await ElementActions.click(this.optionView(name));
-    }   
+    }
 
     async click() {
         await ElementActions.click(this.addButton);
@@ -53,12 +51,14 @@ class AddProject extends BasePage {
     }
 
     async createNewProject() {
-        await addProjectPane.setProjectName(project.getName());
+
+        await addProjectPane.setProjectName(project.getName());                     
+        await addProjectPane.selectColor(project.getColor());
         if (project.getView()=="board" || project.getView()=="list") {
             await addProjectPane.clickoptionView(project.getView());    
-        }             
-        await addProjectPane.selectColor(project.getColor());
+        }
         if (project.getFavorite()=="checked") {
+
             await addProjectPane.clickFavoritesToggle();
         }               
         await addProjectPane.clickAdd();
