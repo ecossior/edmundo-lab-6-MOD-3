@@ -1,0 +1,30 @@
+{
+  "name": "edmundo-lab-6-mod-3-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecossior/edmundo-lab-6-MOD-3-Class.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ecossior/edmundo-lab-6-MOD-3-Class/issues"
+  },
+  "homepage": "https://github.com/ecossior/edmundo-lab-6-MOD-3-Class#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.1.0",
+    "chai": "^4.3.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@types/chai": "^4.3.4",
+    "playwright": "^1.32.1"
+  }
+}
